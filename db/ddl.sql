@@ -32,9 +32,9 @@ CREATE TABLE `dispatch`
 (
     `id`                 varchar(36) PRIMARY KEY,
     `passenger_id`       varchar(36) NOT NULL,
-    `passenger_location` varchar(255),
+    `passenger_location` varchar(100),
     `driver_id`          varchar(36),
-    `driver_location`    varchar(255),
+    `driver_location`    varchar(100),
     `created_at`         timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at`         timestamp DEFAULT CURRENT_TIMESTAMP
 );
