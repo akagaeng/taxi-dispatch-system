@@ -42,6 +42,9 @@ yarn start
 * Open swagger UI
   * http://localhost:8080/
 
+### Assumption
+* 사용자는 택시기사와 승객이 동시에 될 수 없다.
+* 사용자는 1개의 이메일만 사용한다.
 
 ## Resources
 
