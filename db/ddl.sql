@@ -1,8 +1,8 @@
 CREATE TABLE `account`
 (
     `id`         varchar(36) PRIMARY KEY,
-    `email`      varchar(255),
-    `password`   varchar(100),
+    `email`      varchar(255) NOT NULL,
+    `password`   varchar(100) NOT NULL,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP
 );
@@ -10,7 +10,7 @@ CREATE TABLE `account`
 CREATE TABLE `passenger`
 (
     `id`         varchar(36) PRIMARY KEY,
-    `account_id` int,
+    `account_id` varchar(36) NOT NULL,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
@@ -20,7 +20,7 @@ CREATE TABLE `passenger`
 CREATE TABLE `driver`
 (
     `id`         varchar(36) PRIMARY KEY,
-    `account_id` int,
+    `account_id` varchar(36) NOT NULL,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
@@ -31,8 +31,8 @@ CREATE TABLE `driver`
 CREATE TABLE `dispatch`
 (
     `id`                 varchar(36) PRIMARY KEY,
-    `passenger_id`       varchar(36) NOT NULL,
-    `passenger_location` varchar(100),
+    `passenger_id`       varchar(36)  NOT NULL,
+    `passenger_location` varchar(100) NOT NULL,
     `driver_id`          varchar(36),
     `driver_location`    varchar(100),
     `created_at`         timestamp DEFAULT CURRENT_TIMESTAMP,
