@@ -1,0 +1,19 @@
+{
+  "name": "taxi-dispatch-system",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/akagaeng/taxi-dispatch-system.git",
+  "author": "akagaeng <akagaeng@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "swagger-jsdoc": "^6.0.0-rc.5",
+    "swagger-ui-express": "^4.1.5"
+  }
+}
