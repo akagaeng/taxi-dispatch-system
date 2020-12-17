@@ -21,7 +21,6 @@ CREATE TABLE `passenger`
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
-    FOREIGN KEY (`id`) REFERENCES `dispatch` (`passenger_id`)
 );
 
 CREATE TABLE `driver`
@@ -31,7 +30,6 @@ CREATE TABLE `driver`
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
-    FOREIGN KEY (`id`) REFERENCES `dispatch` (`driver_id`)
 
 );
 
@@ -47,5 +45,7 @@ CREATE TABLE `dispatch`
     `finished_at`        timestamp,
     `created_at`         timestamp   DEFAULT CURRENT_TIMESTAMP,
     `updated_at`         timestamp   DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`id`),
+    FOREIGN KEY (`driver_id`)    REFERENCES `driver` (`id`),
 );
 

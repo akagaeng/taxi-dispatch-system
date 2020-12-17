@@ -1,0 +1,36 @@
+# Text backup from dbdiagram.ip
+# https://dbdiagram.io/d/5fd9d0d79a6c525a03bb4524
+
+Table account {
+  id varchar(36) [pk]
+  email varchar(255)
+  password varchar(100)
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table passenger {
+  id varchar(36) [pk]
+  account_id varchar(36) [ref: - account.id]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table driver {
+  id varchar(36) [pk]
+  account_id varchar(36) [ref: - account.id]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table dispatch {
+  id varchar(36) [pk]
+  passenger_id varchar(36) [not null, ref: < passenger.id]
+  passenger_location varchar(100)
+  driver_id varchar(36) [ref: < driver.id]
+  driver_location varchar(100)
+  requested_at timestamp [default: `now()`]
+  finished_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+ }
