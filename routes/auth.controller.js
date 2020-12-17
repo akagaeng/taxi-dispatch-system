@@ -154,10 +154,7 @@ exports.login = async (req, res, next) => {
       email: exAccountEmail
     });
 
-    return res.status(200).json({
-      message: 'success',
-      token
-    });
+    return res.status(200).send(token);
   } catch (err) {
     return next(err);
   }
