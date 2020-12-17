@@ -4,7 +4,7 @@ const {generateToken, generateHash, compareHashedPassword} = require('../libs/mi
 
 const findAccount = async (email) => {
   try {
-    let sql = 'select id, email, password from account ';
+    let sql = 'select id, email, password, role from account ';
     sql += 'where email=:email; '
 
     const [results] = await sequelize.query(sql, {
@@ -17,7 +17,8 @@ const findAccount = async (email) => {
       return {
         id: results[0].id,
         email: results[0].email,
-        password: results[0].password
+        password: results[0].password,
+        role: results[0].role,
       }
     } else {
       return null;
@@ -28,17 +29,18 @@ const findAccount = async (email) => {
   }
 }
 
-const createAccount = async (email, password) => {
+const createAccount = async (email, password, role) => {
   try {
     const passwordHash = await generateHash(password);
     const accountId = generateId();
 
-    let sql = 'insert into account(id, email, password) values(:id, :email, :password); ';
+    let sql = 'insert into account(id, email, password, role) values(:id, :email, :password, :role); ';
     await sequelize.query(sql, {
       replacements: {
         id: accountId,
         email,
-        password: passwordHash
+        password: passwordHash,
+        role
       }
     });
 
@@ -102,7 +104,7 @@ exports.join = async (req, res, next) => {
       });
     }
 
-    const accountId = await createAccount(email, password);
+    const accountId = await createAccount(email, password, role);
 
     if (role === 'passenger') {
       await createPassenger(accountId)
@@ -138,7 +140,7 @@ exports.login = async (req, res, next) => {
       });
     }
 
-    const {id: exAccountId, email: exAccountEmail, password: exAccountPasswordHash} = exAccount;
+    const {id: exAccountId, email: exAccountEmail, password: exAccountPasswordHash, role} = exAccount;
 
     const passwordMatched = await compareHashedPassword(inputPassword, exAccountPasswordHash);
 
@@ -151,7 +153,8 @@ exports.login = async (req, res, next) => {
 
     const token = await generateToken({
       account_id: exAccountId,
-      email: exAccountEmail
+      email: exAccountEmail,
+      role
     });
 
     return res.status(200).send(token);
