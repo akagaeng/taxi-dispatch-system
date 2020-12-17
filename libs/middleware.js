@@ -28,8 +28,8 @@ exports.generateHash = async (password, saltRounds = 12) => {
   return bcrypt.hash(password, saltRounds);
 };
 
-exports.generateToken = async ({account_id, email}) => {
-  const payload = {account_id, email};
+exports.generateToken = async ({account_id, email, role}) => {
+  const payload = {account_id, email, role};
   const secretKey = process.env.JWT_SECRET;
 
   if (!secretKey) {
