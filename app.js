@@ -4,11 +4,12 @@ const helmet = require('helmet');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   console.log('dotenv activated');
   require('dotenv').config();
 }
 
+const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const dispatchRouter = require('./routes/dispatch');
 
@@ -23,15 +24,19 @@ app.use(express.urlencoded({extended: false}));
 
 app.disable('x-powered-by');
 
-app.use('/auth', authRouter);
-app.use('/dispatch', dispatchRouter);
+app.use('/', indexRouter);
+app.use('/api/', indexRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/dispatch', dispatchRouter);
+
+const {name, version} = require('./package.json');
 
 const swaggerDefinition = {
   swagger: '2.0',
   info: {
-    title: name || 'Swagger UI',
-    version: version || '1.0.0',
-    description: 'Api documentation with swagger-ui and jsdoc.'
+    title: name || "Swagger UI",
+    version: version || "1.0.0",
+    description: "Api documentation with swagger-ui and jsdoc."
   },
   basePath: '/api',
   securityDefinitions: {
@@ -51,7 +56,7 @@ const swaggerJsdocOptions = {
 
 const swaggerSpec = swaggerJSDoc(swaggerJsdocOptions);
 
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use('/api-spec', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -72,7 +77,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(app.get('port'), () => {
-  console.log(`[${process.env.NODE_ENV}] Listening on port ${app.get('port')}`);
+  console.log(`Listening on port ${app.get('port')}`);
 });
 
 module.exports = app;
