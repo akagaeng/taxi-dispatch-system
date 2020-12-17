@@ -58,6 +58,14 @@ yarn start
 ## Deployment
 * https://www.netlify.com/
 
+## HTTP response code
+
+* 200: OK
+* 401: Unauthorized
+* 409: Conflict - User already exists
+* 404: Not found
+* 500: Internal server error
+
 ## Resources
 
 ### Database design
