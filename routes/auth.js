@@ -1,5 +1,5 @@
 const express = require('express');
-const {verifyToken} = require('../libs/middleware');
+const {verifyNotRequired} = require('../libs/middleware');
 
 const router = express.Router();
 const auth = require('./auth.controller');
@@ -30,16 +30,20 @@ const auth = require('./auth.controller');
  *               type: string
  *             password:
  *               type: string
+ *             role:
+ *               type: string
+ *               enum: [ 'passenger', 'driver']
  *           example:
  *             email: 'new@test.com'
  *             password: 'qwer1234'
+ *             role: 'passenger'
  *     responses:
  *       200:
  *         description: OK
  *         content:
  *           application/json
  */
-router.post('/join', auth.join);
+router.post('/join', verifyNotRequired, auth.join);
 
 /**
  * POST /auth/login
@@ -76,6 +80,6 @@ router.post('/join', auth.join);
  *         content:
  *           application/json
  */
-router.post('/login', auth.login);
+router.post('/login', verifyNotRequired, auth.login);
 
 module.exports = router;
