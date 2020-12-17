@@ -1,3 +1,0 @@
-INSERT INTO account (id, email, password, created_at, updated_at) VALUES ('1', '1@passenger.com', '1', '2020-12-16 16:22:49', '2020-12-16 16:22:49');
-INSERT INTO account (id, email, password, created_at, updated_at) VALUES ('2', '2@passenger.com', '1', '2020-12-16 16:29:16', '2020-12-16 16:29:16');
-INSERT INTO account (id, email, password, created_at, updated_at) VALUES ('3', '1@driver.com', '1', '2020-12-16 16:29:16', '2020-12-16 16:29:16');

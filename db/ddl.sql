@@ -1,3 +1,10 @@
+-- Only when drop tables
+-- DROP TABLE IF EXISTS `account`;
+-- DROP TABLE IF EXISTS `passenger`;
+-- DROP TABLE IF EXISTS `driver`;
+-- DROP TABLE IF EXISTS `dispatch`;
+
+-- Create table
 CREATE TABLE `account`
 (
     `id`         varchar(36) PRIMARY KEY,
@@ -35,9 +42,9 @@ CREATE TABLE `dispatch`
     `passenger_location` varchar(100) NOT NULL,
     `driver_id`          varchar(36),
     `driver_location`    varchar(100),
-    `status`             varchar(10) DEFAULT 'waiting', # waiting | finished
+    `status`             varchar(10) DEFAULT 'waiting', -- waiting | finished
     `requested_at`       timestamp   DEFAULT CURRENT_TIMESTAMP,
-    `finished_at`        timestamp   DEFAULT CURRENT_TIMESTAMP,
+    `finished_at`        timestamp,
     `created_at`         timestamp   DEFAULT CURRENT_TIMESTAMP,
     `updated_at`         timestamp   DEFAULT CURRENT_TIMESTAMP
 );

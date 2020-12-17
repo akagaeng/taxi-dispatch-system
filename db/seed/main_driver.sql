@@ -1,1 +1,0 @@
-INSERT INTO driver (id, account_id, created_at, updated_at) VALUES ('1', 3, '2020-12-16 16:29:45', '2020-12-16 16:29:45');
