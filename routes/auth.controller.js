@@ -49,8 +49,48 @@ const createAccount = async (email, password) => {
   }
 }
 
+const createDriver = async (accountId) => {
+  try {
+    const id = generateId();
+
+    let sql = 'insert into driver(id, account_id) values(:id, :account_id); ';
+
+    await sequelize.query(sql, {
+      replacements: {
+        id,
+        account_id: accountId
+      }
+    });
+
+    return id;
+  } catch (err) {
+    console.error(err);
+    return new Error(err)
+  }
+}
+
+const createPassenger = async (accountId) => {
+  try {
+    const id = generateId();
+
+    let sql = 'insert into passenger(id, account_id) values(:id, :account_id); ';
+
+    await sequelize.query(sql, {
+      replacements: {
+        id,
+        account_id: accountId
+      }
+    });
+
+    return id;
+  } catch (err) {
+    console.error(err);
+    return new Error(err)
+  }
+}
+
 exports.join = async (req, res, next) => {
-  const {email, password,} = req.body;
+  const {email, password, role} = req.body;
 
   try {
     const exAccount = await findAccount(email);
@@ -64,15 +104,19 @@ exports.join = async (req, res, next) => {
 
     const accountId = await createAccount(email, password);
 
+    if (role === 'passenger') {
+      await createPassenger(accountId)
+    } else if (role === 'driver') {
+      await createDriver(accountId)
+    }
+
     const token = await generateToken({
       account_id: accountId,
       email,
+      role
     });
 
-    res.status(200).json({
-      message: 'success',
-      token
-    });
+    res.status(200).send(token);
 
   } catch (err) {
     console.error(err);
