@@ -43,20 +43,10 @@ yarn start
 
 * Open swagger UI
   * http://localhost:8080/
-
-### Assumption
-* api 버전은 생략함
-* 사용자는 택시기사와 승객이 동시에 될 수 없다.
-* 사용자는 1개의 이메일만 사용한다.
-
-## Modeling
-
-### Database
-
-![db modeling](docs/db.png)
-
-## Deployment
-* https://www.netlify.com/
+* jwt 토큰으로 로그인하는 방법
+  * 회원가입 (`/auth/join`) 또는 로그인 (`/auth/login`) 후 나오는 토큰 값 복사
+  * swagger ui 우측 상단의 `Authorize` 버튼 클릭
+  * jwt  (apiKey) Value: 에 위에서 얻은 토큰(`ey...`) 을 붙여넣고 Authorize 버튼 입력
 
 ## HTTP response code
 
@@ -69,6 +59,8 @@ yarn start
 
 ## Resources
 
+![db modeling](docs/db.png)
+
 ### Database design
 * [Database diagram](https://dbdiagram.io/d/5fd9d0d79a6c525a03bb4524)
 
@@ -76,4 +68,3 @@ yarn start
 * [Brief api design](api_list.md)
 * API spec (Swagger UI)
   * [Localhost](http://localhost:8080/)
-  * [Netlify](http://netlify.com/) - need update url
