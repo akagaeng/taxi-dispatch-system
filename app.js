@@ -9,7 +9,6 @@ if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();
 }
 
-const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const dispatchRouter = require('./routes/dispatch');
 
@@ -24,7 +23,6 @@ app.use(express.urlencoded({extended: false}));
 
 app.disable('x-powered-by');
 
-app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/dispatch', dispatchRouter);
 
