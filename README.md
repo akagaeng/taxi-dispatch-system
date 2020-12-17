@@ -6,7 +6,7 @@
 
 ### Prerequisites
 
-* [node.js](https://nodejs.org/) 8+ (LTS recommended)
+* [node.js](https://nodejs.org/) 12+ (LTS recommended)
   * (optional) [nvm](https://github.com/nvm-sh/nvm) node version manager 
 * [sqlite](https://www.sqlite.org/download.html)
 
@@ -45,6 +45,7 @@ yarn start
   * http://localhost:8080/
 
 ### Assumption
+* api 버전은 생략함
 * 사용자는 택시기사와 승객이 동시에 될 수 없다.
 * 사용자는 1개의 이메일만 사용한다.
 
