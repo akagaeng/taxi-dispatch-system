@@ -63,6 +63,7 @@ yarn start
 * 200: OK
 * 401: Unauthorized
 * 409: Conflict - User already exists
+* 419: Token expired
 * 404: Not found
 * 500: Internal server error
 
