@@ -6,6 +6,8 @@
 
 ### Prerequisites
 
+* [node.js](https://nodejs.org/) 8+ (LTS recommended)
+  * (optional) [nvm](https://github.com/nvm-sh/nvm) node version manager 
 * [sqlite](https://www.sqlite.org/download.html)
 
 ```bash
@@ -51,6 +53,9 @@ yarn start
 ### Database
 
 ![db modeling](docs/db.png)
+
+## Deployment
+* https://www.netlify.com/
 
 ## Resources
 
