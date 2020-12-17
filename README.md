@@ -60,4 +60,10 @@ yarn start
 ## Resources
 
 ### Database design
-* https://dbdiagram.io/d/5fd9d0d79a6c525a03bb4524
+* [Database diagram](https://dbdiagram.io/d/5fd9d0d79a6c525a03bb4524)
+
+### API design
+* [Brief api design](api_list.md)
+* API spec (Swagger UI)
+  * [Localhost](http://localhost:8080/)
+  * [Netlify](http://netlify.com/) - need update url
