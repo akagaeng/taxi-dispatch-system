@@ -35,7 +35,10 @@ CREATE TABLE `dispatch`
     `passenger_location` varchar(100) NOT NULL,
     `driver_id`          varchar(36),
     `driver_location`    varchar(100),
-    `created_at`         timestamp DEFAULT CURRENT_TIMESTAMP,
-    `updated_at`         timestamp DEFAULT CURRENT_TIMESTAMP
+    `status`             varchar(10) DEFAULT 'waiting', # waiting | finished
+    `requested_at`       timestamp   DEFAULT CURRENT_TIMESTAMP,
+    `finished_at`        timestamp   DEFAULT CURRENT_TIMESTAMP,
+    `created_at`         timestamp   DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`         timestamp   DEFAULT CURRENT_TIMESTAMP
 );
 
