@@ -5,6 +5,7 @@ Table account {
   id varchar(36) [pk]
   email varchar(255)
   password varchar(100)
+  role varchar(10)
   created_at timestamp [default: `now()`]
   updated_at timestamp [default: `now()`]
 }
@@ -34,3 +35,4 @@ Table dispatch {
   created_at timestamp [default: `now()`]
   updated_at timestamp [default: `now()`]
  }
+
