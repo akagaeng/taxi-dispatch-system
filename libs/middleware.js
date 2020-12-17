@@ -20,6 +20,32 @@ exports.verifyNotRequired = (req, res, next) => {
   next();
 };
 
+exports.passengerOnly = (req, res, next) => {
+  const {role} = req.decoded;
+
+  if (role === 'passenger') {
+    next();
+  } else {
+    next({
+      status: 401,
+      message: 'Only allowed for passengers',
+    });
+  }
+};
+
+exports.driverOnly = (req, res, next) => {
+  const {role} = req.decoded;
+
+  if (role === 'driver') {
+    next();
+  } else {
+    next({
+      status: 401,
+      message: 'Only allowed for drivers',
+    });
+  }
+};
+
 exports.compareHashedPassword = (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };
