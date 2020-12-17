@@ -20,7 +20,7 @@ CREATE TABLE `passenger`
     `account_id` varchar(36) NOT NULL,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
+    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`)
 );
 
 CREATE TABLE `driver`
@@ -29,7 +29,7 @@ CREATE TABLE `driver`
     `account_id` varchar(36) NOT NULL,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
+    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`)
 
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE `dispatch`
     `requested_at`       timestamp   DEFAULT CURRENT_TIMESTAMP,
     `finished_at`        timestamp,
     `created_at`         timestamp   DEFAULT CURRENT_TIMESTAMP,
-    `updated_at`         timestamp   DEFAULT CURRENT_TIMESTAMP
+    `updated_at`         timestamp   DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`id`),
-    FOREIGN KEY (`driver_id`)    REFERENCES `driver` (`id`),
+    FOREIGN KEY (`driver_id`) REFERENCES `driver` (`id`)
 );
 
