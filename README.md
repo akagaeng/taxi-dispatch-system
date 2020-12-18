@@ -46,7 +46,7 @@ yarn start
 * jwt 토큰으로 로그인하는 방법
   * 회원가입 (`/auth/join`) 또는 로그인 (`/auth/login`) 후 나오는 토큰 값 복사
   * swagger ui 우측 상단의 `Authorize` 버튼 클릭
-  * jwt  (apiKey) Value: 에 위에서 얻은 토큰(`ey...`) 을 붙여넣고 Authorize 버튼 입력
+  * jwt  (apiKey) Value: 부분에 위에서 얻은 토큰(`ey...`) 을 붙여넣고 Authorize 버튼 입력
 
 ## HTTP response code
 
@@ -67,4 +67,4 @@ yarn start
 ### API design
 * [Brief api design](api_list.md)
 * API spec (Swagger UI)
-  * [Localhost](http://localhost:8080/)
+  * http://localhost:8080/
