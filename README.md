@@ -7,7 +7,13 @@
 ### Prerequisites
 
 * [node.js](https://nodejs.org/) 12+ (LTS recommended)
-  * (optional) [nvm](https://github.com/nvm-sh/nvm) node version manager 
+  * (optional) [nvm](https://github.com/nvm-sh/nvm) node version manager:
+
+```bash
+nvm install v12
+nvm use v12
+```
+
 * [sqlite](https://www.sqlite.org/download.html)
 
 ```bash
