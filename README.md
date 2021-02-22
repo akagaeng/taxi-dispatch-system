@@ -49,10 +49,10 @@ yarn start
 
 * Open swagger UI
   * http://localhost:8080/
-* jwt 토큰으로 로그인하는 방법
-  * 회원가입 (`/auth/join`) 또는 로그인 (`/auth/login`) 후 나오는 토큰 값 복사
-  * swagger ui 우측 상단의 `Authorize` 버튼 클릭
-  * jwt  (apiKey) Value: 부분에 위에서 얻은 토큰(`ey...`) 을 붙여넣고 Authorize 버튼 입력
+* JWT Authorization (Login with jwt)
+  * Copy response value(token) when join (`/auth/join`) or login (`/auth/login`) from swagger (or from any browser)
+  * Click `Authorize` button at the top-right corner from swagger ui
+  * Paste token(`ey...`) to the area labeled jwt (apiKey) Value and press Authorize button
 
 ## HTTP response code
 
