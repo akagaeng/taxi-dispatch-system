@@ -17,6 +17,7 @@
     "helmet": "^4.2.0",
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0",
     "swagger-jsdoc": "^6.0.0-rc.5",
