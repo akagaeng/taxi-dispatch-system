@@ -1,4 +1,4 @@
-const {createError} = require('./util');
+const { createError } = require('./util');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -21,7 +21,7 @@ exports.verifyNotRequired = (req, res, next) => {
 };
 
 exports.passengerOnly = (req, res, next) => {
-  const {role} = req.decoded;
+  const { role } = req.decoded;
 
   if (role === 'passenger') {
     next();
@@ -34,7 +34,7 @@ exports.passengerOnly = (req, res, next) => {
 };
 
 exports.driverOnly = (req, res, next) => {
-  const {role} = req.decoded;
+  const { role } = req.decoded;
 
   if (role === 'driver') {
     next();
@@ -54,12 +54,12 @@ exports.generateHash = async (password, saltRounds = 12) => {
   return bcrypt.hash(password, saltRounds);
 };
 
-exports.generateToken = async ({account_id, email, role}) => {
-  const payload = {account_id, email, role};
+exports.generateToken = async ({ account_id, email, role }) => {
+  const payload = { account_id, email, role };
   const secretKey = process.env.JWT_SECRET;
 
   if (!secretKey) {
-    return new Error('Secret key not exists.');
+    throw new Error('Secret key not exists.');
   }
 
   const options = {

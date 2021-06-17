@@ -25,7 +25,7 @@ const findAccount = async (email) => {
     }
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
@@ -47,7 +47,7 @@ const createAccount = async (email, password, role) => {
     return accountId;
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
@@ -67,7 +67,7 @@ const createDriver = async (accountId) => {
     return id;
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
@@ -87,7 +87,7 @@ const createPassenger = async (accountId) => {
     return id;
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
@@ -156,6 +156,8 @@ exports.login = async (req, res, next) => {
       email: exAccountEmail,
       role
     });
+
+    console.log('token:', token);
 
     return res.status(200).send(token);
   } catch (err) {

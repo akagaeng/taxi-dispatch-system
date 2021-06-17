@@ -20,7 +20,7 @@ const findPassengerId = async (account_id) => {
     }
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
@@ -42,7 +42,7 @@ const findDriverId = async (account_id) => {
     }
   } catch (err) {
     console.error(err);
-    return new Error(err)
+    throw new Error(err)
   }
 }
 
